@@ -3,7 +3,7 @@ import type { ThemeConfig } from './types'
 export const themeConfig: ThemeConfig = {
   // SITE INFO ///////////////////////////////////////////////////////////////////////////////////////////
   site: {
-    website: 'https://kryst4line.github.io/dragon.gal/', // Site domain
+    website: 'https://dragon.gal/', // Site domain
     title: 'krystaline\'s lair', // Site title
     author: 'kryst4line', // Author name
     description: 'afterthoughts from a dumb dragoness', // Site description
