@@ -1,0 +1,13 @@
+---
+import IndexLayout from '@/layouts/IndexLayout.astro'
+import { themeConfig } from '@/config'
+import { getSortedFilteredPosts } from '@/utils/draft'
+
+const posts = await getSortedFilteredPosts()
+---
+
+<IndexLayout title=`about | ${themeConfig.site.title}` description={themeConfig.site.description}>
+  <p>
+    oh, hi mark
+  </p>
+</IndexLayout>

@@ -4,9 +4,9 @@ export const themeConfig: ThemeConfig = {
   // SITE INFO ///////////////////////////////////////////////////////////////////////////////////////////
   site: {
     website: 'https://kryst4line.github.io/dragon.gal/', // Site domain
-    title: 'CHIRI', // Site title
-    author: '3ASH', // Author name
-    description: 'Minimal blog built by Astro', // Site description
+    title: 'krystaline\'s lair', // Site title
+    author: 'kryst4line', // Author name
+    description: 'afterthoughts from a dumb dragoness', // Site description
     language: 'en-US' // Default language
   },
 

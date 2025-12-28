@@ -4,11 +4,19 @@ import ThemeToggle from '@/components/ui/ThemeToggle.astro'
 ---
 
 <header>
-  <nav>
+  <nav class="title">
     <a href="/">{themeConfig.site.title}</a>
     <ThemeToggle />
   </nav>
+  <div class="menu">
+    <a href="/blog" class={Astro.url.pathname.includes('blog') ? 'active' : undefined}>blog</a>
+    <!--<a href="/status">status</a>-->
+    <!--<a href="/projects">projects</a>-->
+    <!--<a href="/music">music</a>-->
+    <a href="/about" class={Astro.url.pathname.includes('about') ? 'active' : undefined}>about</a>
+  </div>
 </header>
+
 <style>
   header {
     margin: 0;
@@ -17,12 +25,27 @@ import ThemeToggle from '@/components/ui/ThemeToggle.astro'
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: var(--font-size-l);
+    font-weight: 500;
   }
   header a {
-    font-weight: var(--font-weight-bold);
     color: var(--text-primary);
     text-decoration: none;
-    min-width: 3rem;
+    //min-width: 3rem;
     display: inline-block;
+  }
+  div.menu {
+    font-weight: var(--font-weight-bold);
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0 1.5rem;
+  }
+  div.menu a {
+    transition: opacity 0.1s ease-in-out;
+  }
+  div.menu a:not(:hover):not(.active) {
+    opacity: 0.4;
   }
 </style>
