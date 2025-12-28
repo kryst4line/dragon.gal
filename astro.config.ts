@@ -16,6 +16,8 @@ import { imageConfig } from './src/utils/image-config'
 import path from 'path'
 import netlify from '@astrojs/netlify'
 
+import yeskunallumami from '@yeskunall/astro-umami';
+
 export default defineConfig({
   adapter: netlify(), // Set adapter for deployment, or set `linkCard` to `false` in `src/config.ts`
   site: themeConfig.site.website,
@@ -38,7 +40,12 @@ export default defineConfig({
       Exclude: [(file) => file.toLowerCase().includes('katex')]
     }),
     mdx(),
-    sitemap()
+    sitemap(),
+    yeskunallumami({
+      id: '2a6d6287-4a97-4f02-b561-73397d500ba0',
+      endpointUrl: 'https://umami.dragon.gal/api/x',
+      trackerScriptName: 'x.js'
+    })
   ],
   vite: {
     resolve: {
