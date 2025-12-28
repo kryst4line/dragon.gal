@@ -112,7 +112,7 @@ async function generateFeedInstance(context: APIContext) {
     updated: new Date(),
     generator: 'Astro Chiri Feed Generator',
     feedLinks: {
-      rss: `${siteUrl}/rss.xml`,
+      rss: `${siteUrl}/rss`,
       atom: `${siteUrl}/atom.xml`
     },
     author: {

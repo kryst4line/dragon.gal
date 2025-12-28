@@ -29,7 +29,7 @@ const imageUrl = ogImage ? new URL(ogImage, Astro.url) : new URL('/og/chiri-og.p
   rel="alternate"
   type="application/rss+xml"
   title={themeConfig.site.title}
-  href={new URL('rss.xml', Astro.site)}
+  href={new URL('rss', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
 
