@@ -20,7 +20,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import { themeConfig } from '@/config'
 import ReplyEmailButton from '@/components/ui/ReplyEmailButton.astro'
 
-const { title, pubDate, image, readingTime, toc } = Astro.props as PostLayoutProps
+const { title, description, pubDate, image, readingTime, toc } = Astro.props as PostLayoutProps
 
 const postSlug = Astro.url.pathname.split('/').filter(Boolean).pop() || ''
 const ogImage = `/open-graph/${postSlug}.png`
@@ -28,12 +28,12 @@ const ogImage = `/open-graph/${postSlug}.png`
 
 <BaseLayout
   title={`${title} | ${themeConfig.site.title}`}
-  description={themeConfig.site.description}
+  description={description ?? themeConfig.site.description}
   type="post"
 >
   <BaseHead
     title={`${title} | ${themeConfig.site.title}`}
-    description={themeConfig.site.description}
+    description={description ?? themeConfig.site.description}
     ogImage={image ?? ogImage}
     slot="head"
   />
