@@ -6,6 +6,7 @@ export const themeConfig: ThemeConfig = {
     website: 'https://dragon.gal/', // Site domain
     title: 'krystaline\'s lair', // Site title
     author: 'kryst4line', // Author name
+    email: 'hello@dragon.gal', // Author email
     description: 'afterthoughts from a dumb dragoness', // Site description
     language: 'en-US' // Default language
   },

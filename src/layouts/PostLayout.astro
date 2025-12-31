@@ -18,6 +18,7 @@ import CopyCode from '@/components/ui/CopyCode.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 
 import { themeConfig } from '@/config'
+import ReplyEmailButton from '@/components/ui/ReplyEmailButton.astro'
 
 const { title, pubDate, image, readingTime, toc } = Astro.props as PostLayoutProps
 
@@ -57,6 +58,7 @@ const ogImage = `/open-graph/${postSlug}.png`
           </div>
         </div>
         <slot />
+        <ReplyEmailButton title={title}/>
       </div>
     </main>
     <ImageOptimizer />

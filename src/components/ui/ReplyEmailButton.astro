@@ -1,0 +1,29 @@
+---
+import { themeConfig } from '@/config.ts'
+const {title} = Astro.props;
+---
+<div>
+  <a href=`mailto:${themeConfig.site.email}?subject=Re: ${title}`>
+    Reply via email
+  </a>
+</div>
+
+<style>
+  div {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+  }
+
+  a {
+    display: block;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all ease-out 0.2s;
+  }
+
+  a:hover {
+    color: var(--text-primary);
+    text-decoration-color: var(--text-primary);
+  }
+</style>
