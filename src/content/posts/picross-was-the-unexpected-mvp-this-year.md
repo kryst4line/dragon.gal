@@ -1,5 +1,6 @@
 ---
-title: Picross was the unexpected MVP this year — 2025 Rewind
+title: '2025 Gaming Rewind: Picross was the unexpected MVP this year'
+description: 2025 will not be remembered as the year I finished many new (unplayed) games.
 pubDate: 2025-12-26T21:48:01.650Z
 tags: 
   - gaming
