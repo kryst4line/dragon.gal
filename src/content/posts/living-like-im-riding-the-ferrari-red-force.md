@@ -2,7 +2,7 @@
 title: "2025 Life Rewind: Living like I'm riding the Ferrari Red Force"
 description: What a year this has been. Almost as hard as a rollercoaster than Red Force, the only I rode when we went to Port Aventura a few months ago.
 pubDate: 2025-12-31T18:15:10Z
-image: https://static.dragon.gal/images/2025/12/rewindlife01.webp
+image: https://static.dragon.gal/images/2025/12/rewindlife00.webp
 tags:
   - journal
   - 2025 rewind
