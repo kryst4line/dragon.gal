@@ -2,7 +2,7 @@
 title: Clicks Communicator is my first hyperfocus of 2026
 description: The hyperfocus cycle has begun, yet again, and pretty soon this year. This phone is so unique it had me obsessed for two days.
 pubDate: 2026-01-04T14:54:06Z
-image: https://static.dragon.gal/2026/01/clicks-communicator-00.webp
+image: https://static.dragon.gal/images/2026/01/clicks-communicator-00.webp
 tags:
   - tech
 ---
@@ -37,4 +37,4 @@ For sure, it is perfect for communicating (it is called the Clicks Communicator,
 
 Another case would be to get it as a **temporary alternative** to play with the idea. My current iPhone 11 can take care of Carplay and the ocassional Pokémon TCGP draw, so I could carry it in the backpack as kind of a backup for quick pics while using this one more like a primary phone. Thinking about it, **it seems the most sensible choice**. I didn't have any intention of replacing it yet as it works wonders for what I use it, and this way I could even delay it even further.
 
-::link{url="https://www.clicksphone.com/en/communicator"}
+![Clicks Communicator render image](https://static.dragon.gal/images/2026/01/clicks-communicator-00.webp)
