@@ -2,13 +2,15 @@
 import { type CollectionEntry, getCollection } from 'astro:content'
 import PostLayout from '@/layouts/PostLayout.astro'
 import { render } from 'astro:content'
+import { slugRewrite } from '@/utils/slug-rewrite.ts'
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts')
   return posts
     .filter((post) => !post.id.startsWith('_'))
+    .map(slugRewrite)
     .map((post) => ({
-      params: { slug: post.id },
+      params: { slug: slugRewrite(post).id },
       props: post
     }))
 }
@@ -21,7 +23,6 @@ const { Content, remarkPluginFrontmatter } = await render(post)
 const readingTime = remarkPluginFrontmatter.readingTime
 const toc = remarkPluginFrontmatter.toc || []
 ---
-
 <PostLayout {...post.data} readingTime={readingTime} toc={toc}>
   <Content />
 </PostLayout>

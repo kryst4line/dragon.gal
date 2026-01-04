@@ -1,12 +1,15 @@
 import { getCollection, type CollectionEntry } from 'astro:content'
 import type { YearGroupedPosts } from '@/types'
+import { slugRewrite } from '@/utils/slug-rewrite.ts'
 
 /**
  * Get all posts, filtering out posts whose filenames start with _
  */
 export async function getFilteredPosts() {
   const posts = await getCollection('posts')
-  return posts.filter((post: CollectionEntry<'posts'>) => !post.id.startsWith('_'))
+  return posts
+    .filter((post: CollectionEntry<'posts'>) => !post.id.startsWith('_'))
+    .map(slugRewrite);
 }
 
 /**

@@ -23,4 +23,4 @@ Sadly, it's not perfect either: There are over a hundred side quests and even th
 
 Oh, right; I forgot to talk about graphics and how bad it looks, as it's everything people seemed to focus when bashing this game. Game looks fine, nothing like the stutters on Scarlet/Violet or those horrible texture fields on Legends Arceus, and it holds surprisingly well 30 fps on Switch 1 and 60 on Switch 2. I'm here for the fun, and **if the performance is alright and the art style is a hit, I fail to find any issue**.
 
-Though I guess after [my last entry](/i-cant-get-excited-for-anything-anymore) I'm a [ragebaiter](https://bear-images.sfo2.cdn.digitaloceanspaces.com/kryst4line/r9y05so1.webp) already. Can't help it, duh.
+Though I guess after [my last entry](/2025-11-17-i-cant-get-excited-for-anything-anymore) I'm a [ragebaiter](https://bear-images.sfo2.cdn.digitaloceanspaces.com/kryst4line/r9y05so1.webp) already. Can't help it, duh.

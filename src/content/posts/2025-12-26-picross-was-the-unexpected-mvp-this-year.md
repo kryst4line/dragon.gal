@@ -1,10 +1,10 @@
 ---
-title: '2025 Gaming Rewind: Picross was the unexpected MVP this year'
+title: 'Picross was the unexpected MVP this year: 2025 Gaming Recap'
 description: 2025 will not be remembered as the year I finished many new (unplayed) games.
 pubDate: 2025-12-26T21:48:01.650Z
 tags: 
   - gaming
-  - 2025 rewind
+  - 2025 recap
 ---
 
 2025 will not be remembered as the year I finished many new (unplayed) games. Actually, I never was one to finish many of her games, but if you take Picross and Metroids out of the equation... damn, it was quite poor. Still, I wanted to share my thoughts on some of the most remarkable ones. Here we go.
@@ -67,7 +67,7 @@ Honorable mention to the creator getting all proud in the worst way after many p
 
 I already wrote about this game in more detail, but I'll just say that it was my GOTY and I'm honestly surprised— I can't remember when was the last time I could say that for a Pokémon game. 
 
-> ⛓️: [Pokémon Legends: Z-A finally gets it right](/pokemon-legends-z-a-finally-gets-it-right)
+> ⛓️: [Pokémon Legends: Z-A finally gets it right](/2025-12-01-pokemon-legends-z-a-finally-gets-it-right)
 
 ---
 
