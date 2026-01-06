@@ -5,7 +5,7 @@ pubDate: 2025-12-31T18:15:10Z
 image: https://static.dragon.gal/images/2025/12/rewindlife00.webp
 tags:
   - journal
-  - 2025 rewind
+  - 2025 recap
 ---
 What a year this has been. Almost as hard as a rollercoaster than Red Force, the only I rode when we went to Port Aventura a few months ago. No, wait a second– actually it's a pretty good comparison: you're almost all the time down at ground level except a hard upwards elevation in the middle just to go down even harder right after.
 
