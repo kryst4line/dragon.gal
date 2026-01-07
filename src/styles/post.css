@@ -130,6 +130,11 @@
   animation: fadeIn 0.3s ease-out forwards;
 }
 
+/* Videos */
+.prose video {
+  max-width: 100%;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
