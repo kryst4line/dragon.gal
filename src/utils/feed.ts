@@ -7,6 +7,7 @@ import { parse as htmlParser } from 'node-html-parser'
 import sanitizeHtml from 'sanitize-html'
 import { themeConfig } from '@/config'
 import path from 'node:path'
+import { slugRewrite } from '@/utils/slug-rewrite.ts'
 
 const markdownParser = new MarkdownIt({
   html: true,
@@ -125,10 +126,11 @@ async function generateFeedInstance(context: APIContext) {
     'posts',
     ({ id }: CollectionEntry<'posts'>) => !id.startsWith('_')
   )
-  const sortedPosts = posts.sort(
-    (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) =>
-      b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-  )
+  const sortedPosts = posts
+    .sort(
+      (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) =>
+        b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    ).map(slugRewrite)
 
   for (const post of sortedPosts) {
     const postSlug = post.id.replace(/\.[^/.]+$/, '')
