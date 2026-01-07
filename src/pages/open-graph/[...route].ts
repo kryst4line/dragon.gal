@@ -1,14 +1,16 @@
 import { getCollection } from 'astro:content'
 import { OGImageRoute } from 'astro-og-canvas'
 import { themeConfig } from '../../config'
+import { slugRewrite } from '@/utils/slug-rewrite.ts'
 
 const collectionEntries = await getCollection('posts')
 
 // Map the array of content collection entries to create an object.
 // Converts [{ id: 'post.md', data: { title: 'Example', pubDate: Date } }]
 // to { 'post.md': { title: 'Example', pubDate: Date } }
+const slugFixedEntries = collectionEntries.map(slugRewrite)
 const pages = Object.fromEntries(
-  collectionEntries.map(({ id, data }) => [id.replace(/\.(md|mdx)$/, ''), data])
+  slugFixedEntries.map(({ id, data }) => [id.replace(/\.(md|mdx)$/, ''), data])
 )
 
 export const { getStaticPaths, GET } = await OGImageRoute({
