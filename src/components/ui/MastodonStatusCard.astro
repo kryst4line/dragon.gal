@@ -1,0 +1,80 @@
+<div id="status">
+  <p>
+    Loading status...
+  </p>
+</div>
+
+<style is:inline>
+  @import '@/styles/global.css';
+
+  #status {
+    display: inline-block;
+    width: 100%;
+    background-color: var(--selection);
+    border-radius: 6px;
+    padding: 0 1em;
+  }
+  #status p {
+    font-size: var(--font-size-s);
+    margin-block-start: 0.75em;
+    margin-block-end: 0.75em;
+  }
+  #status a {
+    color: var(--text-link);
+    text-decoration: underline;
+    text-decoration-color: var(--text-tertiary);
+    transition: text-decoration-color 0.2s ease-out;
+  }
+  #status a:hover {
+    color: var(--text-link);
+    text-decoration-color: var(--text-link);
+  }
+  #status-time {
+    display: flex;
+    justify-content: end;
+  }
+  #status-time a {
+    text-align: right;
+    font-style: italic;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", async function() {
+    const response = await fetch("https://meow.social/api/v1/accounts/108194628954733239/statuses?exclude_replies=true&limit=1");
+    response.json().then(data => {
+      const status = document.getElementById("status");
+      status.innerHTML = data[0].content;
+
+      const statusTime = document.createElement("p");
+      statusTime.id = "status-time";
+      const statusLink = document.createElement("a");
+      statusLink.innerText = "— " + timeAgo(data[0].created_at);
+      statusLink.href = data[0].url;
+      statusLink.target = "_blank";
+      statusTime.appendChild(statusLink);
+      status.appendChild(statusTime);
+    });
+  }, false);
+
+  function timeAgo(input) {
+    const date = (input instanceof Date) ? input : new Date(input);
+    const formatter = new Intl.RelativeTimeFormat('en');
+    const ranges = {
+      years: 3600 * 24 * 365,
+      months: 3600 * 24 * 30,
+      weeks: 3600 * 24 * 7,
+      days: 3600 * 24,
+      hours: 3600,
+      minutes: 60,
+      seconds: 1
+    };
+    const secondsElapsed = (date.getTime() - Date.now()) / 1000;
+    for (let key in ranges) {
+      if (ranges[key] < Math.abs(secondsElapsed)) {
+        const delta = secondsElapsed / ranges[key];
+        return formatter.format(Math.round(delta), key);
+      }
+    }
+  }
+</script>
