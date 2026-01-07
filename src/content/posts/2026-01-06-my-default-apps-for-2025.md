@@ -6,7 +6,7 @@ tags:
   - journal
   - 2025 recap
 ---
-When I joined Bear Blog I couldn't stop sneaking and reading [Jenna](https://notes.jeddacp.com)'s posts, which included some like this. As a certified nerd, I'm pretty often changing my workflows and that includes the default apps for many activities— **so why not take the idea and join the bandwagon?**
+When I joined Bear Blog I couldn't stop sneaking and reading [Jedda](https://notes.jeddacp.com)'s posts, which included some like this. As a certified nerd, I'm pretty often changing my workflows and that includes the default apps for many activities— **so why not take the idea and join the bandwagon?**
 
 I will also embed links for some of the lesser known/open source/more interesting choices:
 
