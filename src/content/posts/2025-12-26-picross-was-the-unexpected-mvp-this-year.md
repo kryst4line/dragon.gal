@@ -67,7 +67,7 @@ Honorable mention to the creator getting all proud in the worst way after many p
 
 I already wrote about this game in more detail, but I'll just say that it was my GOTY and I'm honestly surprised— I can't remember when was the last time I could say that for a Pokémon game. 
 
-> ⛓️: [Pokémon Legends: Z-A finally gets it right](/2025-12-01-pokemon-legends-z-a-finally-gets-it-right)
+> ⛓️: [Pokémon Legends: Z-A finally gets it right](https://dragon.gal/pokemon-legends-z-a-finally-gets-it-right)
 
 ---
 
