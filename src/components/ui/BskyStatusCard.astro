@@ -1,0 +1,108 @@
+<div id="status">
+  <p>
+    Loading status...
+  </p>
+</div>
+
+<style is:inline>
+  #status {
+    display: inline-block;
+    width: 100%;
+    background-color: var(--selection);
+    border-radius: 6px;
+    padding: 0 1em;
+  }
+  #status p {
+    font-size: var(--font-size-s);
+    margin-block-start: 0.75em;
+    margin-block-end: 0.75em;
+  }
+  #status a {
+    color: var(--text-link);
+    text-decoration: underline;
+    text-decoration-color: var(--text-tertiary);
+    transition: text-decoration-color 0.2s ease-out;
+  }
+  #status a:hover {
+    color: var(--text-link);
+    text-decoration-color: var(--text-link);
+  }
+  #status-embed {
+    display: flex;
+  }
+  #status-embed img {
+    flex: 1;
+    min-width: 0;
+  }
+  #status-time {
+    display: flex;
+    justify-content: end;
+  }
+  #status-time a {
+    text-align: right;
+    font-style: italic;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", async function() {
+    const response = await fetch("https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:qoce42x76b7vf574ttpnh2vy/app.bsky.feed.generator/Journal&limit=1");
+    response.json().then(data => {
+      console.warn(data)
+      // Text
+      const post = data.feed[0].post;
+      const status = document.getElementById("status");
+      const statusText = document.createElement("p");
+      statusText.innerText = post.record.text;
+      status.innerHTML = '';
+      status.appendChild(statusText);
+
+      // Embed
+      const statusEmbed = document.createElement("div");
+      statusEmbed.id = "status-embed";
+      if (post.embed?.$type.includes("images")) {
+        const images = post.embed.images;
+        console.warn(images)
+        images.forEach(image => {
+          const statusImage = document.createElement("img");
+          statusImage.src = image.thumb;
+          statusImage.alt = image.alt;
+          statusEmbed.appendChild(statusImage);
+        })
+      }
+      status.appendChild(statusEmbed);
+
+      // Time
+      const postId = post.uri.substring(post.uri.lastIndexOf('/') + 1);
+      const statusTime = document.createElement("p");
+      statusTime.id = "status-time";
+      const statusLink = document.createElement("a");
+      statusLink.innerText = "— " + timeAgo(post.record.createdAt);
+      statusLink.href = 'https://bsky.app/profile/dragon.gal/post/' + postId;
+      statusLink.target = "_blank";
+      statusTime.appendChild(statusLink);
+      status.appendChild(statusTime);
+    });
+  }, false);
+
+  function timeAgo(input) {
+    const date = (input instanceof Date) ? input : new Date(input);
+    const formatter = new Intl.RelativeTimeFormat('en');
+    const ranges = {
+      years: 3600 * 24 * 365,
+      months: 3600 * 24 * 30,
+      weeks: 3600 * 24 * 7,
+      days: 3600 * 24,
+      hours: 3600,
+      minutes: 60,
+      seconds: 1
+    };
+    const secondsElapsed = (date.getTime() - Date.now()) / 1000;
+    for (const key in ranges) {
+      if (ranges[key] < Math.abs(secondsElapsed)) {
+        const delta = secondsElapsed / ranges[key];
+        return formatter.format(Math.round(delta), key);
+      }
+    }
+  }
+</script>

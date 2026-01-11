@@ -1,7 +1,7 @@
 ---
 import IndexLayout from '@/layouts/IndexLayout.astro'
 import { themeConfig } from '@/config'
-import MastodonStatusCard from '@/components/ui/MastodonStatusCard.astro'
+import BskyStatusCard from '@/components/ui/BskyStatusCard.astro'
 ---
 
 <IndexLayout title={themeConfig.site.title} description={themeConfig.site.description}>
@@ -16,6 +16,6 @@ import MastodonStatusCard from '@/components/ui/MastodonStatusCard.astro'
   </p>
 
   <div style="margin-top: 2.75rem">
-    <MastodonStatusCard />
+    <BskyStatusCard />
   </div>
 </IndexLayout>
