@@ -184,11 +184,11 @@
     };
     const secondsElapsed = (date.getTime() - Date.now()) / 1000;
     for (const key in ranges) {
-      //@ts-expect-error
+      //@ts-expect-error: compiler doesn't find keys as string
       if (ranges[key] < Math.abs(secondsElapsed)) {
-        //@ts-expect-error
+        //@ts-expect-error: compiler doesn't find keys as string
         const delta = secondsElapsed / ranges[key];
-        //@ts-expect-error
+        //@ts-expect-error: compiler doesn't find keys as string
         return formatter.format(Math.round(delta), key);
       }
     }
