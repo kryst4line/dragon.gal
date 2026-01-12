@@ -27,12 +27,48 @@
     color: var(--text-link);
     text-decoration-color: var(--text-link);
   }
-  #status-embed {
+  #status-img-embed {
     display: flex;
   }
-  #status-embed img {
+  #status-img-embed img {
     flex: 1;
     min-width: 0;
+  }
+  #status-ext-embed {
+    background-color: var(--code-bg);
+  }
+  #status-ext-embed a {
+    height: 3.5rem;
+    display: flex;
+    gap: 0.75rem;
+
+    &:after {
+      content: none;
+    }
+  }
+  #status-ext-embed img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  #status-ext-info {
+    font-size: var(--font-size-s);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #status-ext-title {
+    font-weight: var(--font-weight-bold);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  #status-ext-desc {
+    opacity: 0.75;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
   #status-time {
     display: flex;
@@ -44,48 +80,97 @@
   }
 </style>
 
-<script is:inline>
+<script>
+  import {AtpAgent} from '@atproto/api';
+  import { isView as isViewImage } from '@atproto/api/dist/client/types/app/bsky/embed/images'
+  import { isView as isViewExternal } from '@atproto/api/dist/client/types/app/bsky/embed/external'
+
+  const bskyAgent = new AtpAgent({
+    service: 'https://api.bsky.app'
+  });
+
   document.addEventListener("astro:page-load", async function() {
-    const response = await fetch("https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:qoce42x76b7vf574ttpnh2vy/app.bsky.feed.generator/Journal&limit=1");
-    response.json().then(data => {
-      console.warn(data)
-      // Text
-      const post = data.feed[0].post;
-      const status = document.getElementById("status");
-      const statusText = document.createElement("p");
-      statusText.innerText = post.record.text;
-      status.innerHTML = '';
-      status.appendChild(statusText);
+    const response = bskyAgent.app.bsky.feed.searchPosts({
+      limit: 1,
+      q: 'from:dragon.gal #journal'
+    });
+    response.then(({success, data}) => {
+      if (success) {
+        // Text
+        const post = data.posts[0];
+        const status = document.getElementById("status");
+        const statusText = document.createElement("p");
+        statusText.innerText = post.record.text as string;
+        status!.innerHTML = '';
+        status!.appendChild(statusText);
 
-      // Embed
-      const statusEmbed = document.createElement("div");
-      statusEmbed.id = "status-embed";
-      if (post.embed?.$type.includes("images")) {
-        const images = post.embed.images;
-        console.warn(images)
-        images.forEach(image => {
-          const statusImage = document.createElement("img");
-          statusImage.src = image.thumb;
-          statusImage.alt = image.alt;
-          statusEmbed.appendChild(statusImage);
-        })
+        // Embed
+        if (post.embed) {
+          const statusEmbed = document.createElement("div");
+
+          // Image embed
+          if (isViewImage(post.embed)) {
+            statusEmbed.id = "status-img-embed";
+            const images = post.embed.images;
+
+            images.forEach(image => {
+              const statusImage = document.createElement("img");
+              statusImage.src = image.thumb;
+              statusImage.alt = image.alt;
+              statusEmbed.appendChild(statusImage);
+            })
+          }
+
+          // External embed
+          if (isViewExternal(post.embed)) {
+            statusEmbed.id = "status-ext-embed";
+            const external = post.embed.external;
+
+            const statusLink = document.createElement("a");
+            statusLink.href = external.uri;
+            statusLink.target = "_blank";
+
+            if (external.thumb) {
+              const externalImage = document.createElement("img");
+              externalImage.src = external.thumb;
+              externalImage.alt = 'Link thumbnail';
+              statusLink.appendChild(externalImage);
+            }
+
+            const externalInfo = document.createElement("div");
+            externalInfo.id = "status-ext-info";
+
+            const externalTitle = document.createElement("span");
+            externalTitle.id = "status-ext-title";
+            externalTitle.innerText = external.title;
+            externalInfo.appendChild(externalTitle);
+
+            const externalDesc = document.createElement("span");
+            externalDesc.id = "status-ext-desc";
+            externalDesc.innerText = external.description;
+            externalInfo.appendChild(externalDesc);
+            statusLink.appendChild(externalInfo);
+            statusEmbed.appendChild(statusLink);
+          }
+
+          status!.appendChild(statusEmbed);
+        }
+
+        // Time
+        const postId = post.uri.substring(post.uri.lastIndexOf('/') + 1);
+        const statusTime = document.createElement("p");
+        statusTime.id = "status-time";
+        const statusLink = document.createElement("a");
+        statusLink.innerText = "— " + timeAgo(post.record.createdAt as string);
+        statusLink.href = 'https://bsky.app/profile/dragon.gal/post/' + postId;
+        statusLink.target = "_blank";
+        statusTime.appendChild(statusLink);
+        status!.appendChild(statusTime);
       }
-      status.appendChild(statusEmbed);
-
-      // Time
-      const postId = post.uri.substring(post.uri.lastIndexOf('/') + 1);
-      const statusTime = document.createElement("p");
-      statusTime.id = "status-time";
-      const statusLink = document.createElement("a");
-      statusLink.innerText = "— " + timeAgo(post.record.createdAt);
-      statusLink.href = 'https://bsky.app/profile/dragon.gal/post/' + postId;
-      statusLink.target = "_blank";
-      statusTime.appendChild(statusLink);
-      status.appendChild(statusTime);
     });
   }, false);
 
-  function timeAgo(input) {
+  function timeAgo(input: string | Date | number) {
     const date = (input instanceof Date) ? input : new Date(input);
     const formatter = new Intl.RelativeTimeFormat('en');
     const ranges = {
@@ -99,8 +184,11 @@
     };
     const secondsElapsed = (date.getTime() - Date.now()) / 1000;
     for (const key in ranges) {
+      //@ts-ignore
       if (ranges[key] < Math.abs(secondsElapsed)) {
+        //@ts-ignore
         const delta = secondsElapsed / ranges[key];
+        //@ts-ignore
         return formatter.format(Math.round(delta), key);
       }
     }
