@@ -184,11 +184,11 @@
     };
     const secondsElapsed = (date.getTime() - Date.now()) / 1000;
     for (const key in ranges) {
-      //@ts-ignore
+      //@ts-expect-error
       if (ranges[key] < Math.abs(secondsElapsed)) {
-        //@ts-ignore
+        //@ts-expect-error
         const delta = secondsElapsed / ranges[key];
-        //@ts-ignore
+        //@ts-expect-error
         return formatter.format(Math.round(delta), key);
       }
     }
