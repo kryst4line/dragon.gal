@@ -132,7 +132,7 @@
       if (success) {
         // Text
         const post = data.posts[0];
-        const status = document.getElementById("status");
+        const status = document.getElementById("status-bsky");
         const statusText = document.createElement("p");
         statusText.innerText = post.record.text as string;
         status!.innerHTML = '';
