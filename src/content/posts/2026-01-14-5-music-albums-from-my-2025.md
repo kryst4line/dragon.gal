@@ -1,6 +1,6 @@
 ---
 title: 5 music albums from my 2025
-description: These are some of the favourite albums I discovered on 2025. Not all of them are actually from 2025, but it's close.
+description: These are some of my favourite albums discovered on 2025. Not all of them are actually from 2025, but it's close.
 pubDate: 2026-01-14T11:04:00Z
 image: https://static.dragon.gal/images/2026/01/five-albums-00.webp
 tags:
