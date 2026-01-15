@@ -19,6 +19,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 
 import { themeConfig } from '@/config'
 import ReplyEmailButton from '@/components/ui/ReplyEmailButton.astro'
+import HCard from '@/components/microformats2/HCard.astro'
 
 const { title, description, pubDate, image, readingTime, toc } = Astro.props as PostLayoutProps
 
@@ -38,13 +39,13 @@ const ogImage = `/open-graph/${postSlug}.png`
     slot="head"
   />
   <div class="post-container">
-    <main>
+    <main class="h-entry">
       <div class="prose">
         <GradientMask />
         <BackButton />
         {themeConfig.post.toc && <TableOfContents toc={toc} />}
         <div class="title">
-          <h1>{title}</h1>
+          <h1 class="p-name">{title}</h1>
           <div class="date">
             <FormattedDate date={pubDate} context="post" />
             {
@@ -56,8 +57,13 @@ const ogImage = `/open-graph/${postSlug}.png`
               )
             }
           </div>
+          <div class="p-author" hidden>
+            <HCard />
+          </div>
         </div>
-        <slot />
+        <div class="e-content">
+          <slot />
+        </div>
         <ReplyEmailButton title={title}/>
       </div>
     </main>
