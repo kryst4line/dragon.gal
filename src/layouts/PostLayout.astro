@@ -25,6 +25,8 @@ const { title, description, pubDate, image, readingTime, toc } = Astro.props as 
 
 const postSlug = Astro.url.pathname.split('/').filter(Boolean).pop() || ''
 const ogImage = `/open-graph/${postSlug}.png`
+
+const url = Astro.url;
 ---
 
 <BaseLayout
@@ -57,9 +59,8 @@ const ogImage = `/open-graph/${postSlug}.png`
               )
             }
           </div>
-          <div class="p-author" hidden>
-            <HCard />
-          </div>
+          <HCard />
+          <a class="u-url" href={url} hidden />
         </div>
         <div class="e-content">
           <slot />
