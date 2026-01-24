@@ -115,6 +115,7 @@
 <script>
   import {AtpAgent} from '@atproto/api';
   import { isView as isViewImage } from '@atproto/api/dist/client/types/app/bsky/embed/images'
+  import { isView as isViewVideo } from '@atproto/api/dist/client/types/app/bsky/embed/video'
   import { isView as isViewExternal } from '@atproto/api/dist/client/types/app/bsky/embed/external'
 
   const bskyAgent = new AtpAgent({
@@ -153,7 +154,18 @@
               statusImage.src = image.thumb;
               statusImage.alt = image.alt;
               statusEmbed.appendChild(statusImage);
-            })
+            });
+          }
+
+          // Video embed
+          if (isViewVideo(post.embed)) {
+            statusEmbed.id = "status-img-embed";
+            const video = post.embed;
+
+            const statusImage = document.createElement("img");
+            statusImage.src = video.thumbnail!;
+            statusImage.alt = video.alt!;
+            statusEmbed.appendChild(statusImage);
           }
 
           // External embed
