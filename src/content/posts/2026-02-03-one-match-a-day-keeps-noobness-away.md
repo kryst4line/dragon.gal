@@ -1,7 +1,7 @@
 ---
 title: "One match a day keeps n00bness away"
 description: It was about time that a new racing game offered a focused career mode with appealing gameplay.
-pubDate: 2026-01-26T16:23:31Z
+pubDate: 2026-02-03T11:13:16Z
 image: https://static.dragon.gal/images/2026/02/one-match-a-day-00.webp
 tags:
   - gaming
