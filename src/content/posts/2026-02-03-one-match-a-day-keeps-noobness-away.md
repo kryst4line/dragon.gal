@@ -1,6 +1,6 @@
 ---
 title: "One match a day keeps n00bness away"
-description: It was about time that a new racing game offered a focused career mode with appealing gameplay.
+description: Last week I reached one whole year playing Rocket League everyday. That's it, that's the whole post; have a good da—
 pubDate: 2026-02-03T11:13:16Z
 image: https://static.dragon.gal/images/2026/02/one-match-a-day-00.webp
 tags:
