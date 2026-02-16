@@ -24,7 +24,7 @@
     "@atproto/api": "^0.18.20",
     "@playform/inline": "^0.1.2",
     "@yeskunall/astro-umami": "^0.0.7",
-    "astro": "5.17.1",
+    "astro": "5.17.2",
     "astro-og-canvas": "^0.10.1",
     "canvaskit-wasm": "^0.40.0",
     "feed": "^5.2.0",
