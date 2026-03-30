@@ -21,7 +21,7 @@
     "@astrojs/netlify": "6.6.5",
     "@astrojs/rss": "4.0.17",
     "@astrojs/sitemap": "3.7.1",
-    "@atproto/api": "^0.19.4",
+    "@atproto/api": "^0.19.5",
     "@playform/inline": "^0.1.4",
     "@yeskunall/astro-umami": "^0.0.7",
     "astro": "5.18.1",
